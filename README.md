@@ -2,24 +2,6 @@
 
 -	[`2.54`, `latest` (*2.54/Dockerfile*)](https://github.com/docker-library/redmine/blob/16b22cf462b639577c55b7086fe7529278d00a94/3.4/Dockerfile)
 
-# Quick reference
-
--	**Where to get help**:  
-	[the Docker Community Forums](https://forums.docker.com/), [the Docker Community Slack](https://blog.docker.com/2016/11/introducing-docker-community-directory-docker-community-slack/), or [Stack Overflow](https://stackoverflow.com/search?tab=newest&q=docker)
-
--	**Where to file issues**:  
-
--	**Maintained by**:  
-
--	**Published image artifact details**:  
-
--	**Image updates**:  
-
--	**Source of this description**:  
-
--	**Supported Docker versions**:  
-	[the latest release](https://github.com/docker/docker-ce/releases/latest) (down to 1.6 on a best-effort basis)
-
 # What is Gong-R?
 
 Gong is a free and open source, web-based project management and issue tracking tool. It allows users to manage multiple projects and associated subprojects. 
@@ -154,7 +136,9 @@ This variable sets the Client Id for the Oauht communication between Gong a Gong
 This variable sets the Client Password for the Oauht communication between Gong a Gong-Reporte. If not specified, it will default to `f4363b9e-12a8-421e-88ae-010d406fa208AA`. 
 
 GONG_REPORTE_HOST=gong-reporte
+
 GONG_REPORTE_PORT=8080
+
 GONG_REPORTE_DB_HOST=db
 GONG_REPORTE_DB_NAME=gongr
 GONG_REPORTE_DB_USER=gongr

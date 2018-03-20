@@ -1,21 +1,34 @@
 #!/bin/bash
 
-until nc -z $GONG_REPORTE_DB_HOST $MYSQL_PORT; do
-    echo "$(date) - waiting for mysql..."
-    sleep 1
-done
 
-	read -d '' gong_db <<EOF
-create DATABASE /*!32312 IF NOT EXISTS*/ $GONG_DB_NAME;
-grant ALL ON $GONG_DB_NAME.* TO $GONG_DB_USER@$GONG_DB_NAME IDENTIFIED BY '$GONG_DB_PASSWORD';
+	read -d '' webapp <<EOF
+server {
+    listen 80;
+    server_name $GONG_HOST;
+    root /home/app/gor/public;
+
+    # The following deploys your Ruby/Python/Node.js/Meteor app on Passenger.
+
+    # Not familiar with Passenger, and used (G)Unicorn/Thin/Puma/pure Node before?
+    # Yes, this is all you need to deploy on Passenger! All the reverse proxying,
+    # socket setup, process management, etc are all taken care automatically for
+    # you! Learn more at https://www.phusionpassenger.com/.
+    passenger_enabled on;
+    passenger_user app;
+    passenger_app_env production;
+
+    # If this is a Ruby app, specify a Ruby version:
+    passenger_ruby /usr/bin/ruby2.2;
+}
 EOF
 
-	echo "Creando $gong_db"
-	echo "$gong_db" > ./gong_db.sql
 
-mysql -h $GONG_DB_HOST -u root -p$MYSQL_ROOT_PASSWORD < ./gong_db.sql
+echo "Creating file webapp.conf $webapp"
 
-rm ./gong_db.sql
+echo "$webapp" > /etc/nginx/sites-enabled/webapp.conf
+
+
+
 
 	read -d '' database <<EOF
 $RAILS_ENV: 
@@ -27,6 +40,7 @@ $RAILS_ENV:
   port: $GONG_DB_PORT
   username: $GONG_DB_USERNAME
 EOF
+
 
 echo "Creating file database.yml $database"
 
