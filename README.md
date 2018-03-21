@@ -38,7 +38,7 @@ The Docker documentation is a good starting point for understanding the differen
 2.	Start your `gong` container like this:
 
 	```console
-	$ docker run -d --name some-gong -v /my/own/datadir:/usr/src/redmine/files --link some-mysql:mysql gong
+	$ docker run -d --name some-gong -v /my/own/datadir:/var/lib/gong/files --link some-mysql:mysql gong
 	```
 
 The `-v /my/own/datadir:/var/lib/gong/files` part of the command mounts the `/my/own/datadir` directory from the underlying host system as `/var/lib/gong/files` inside the container, where Gong will store uploaded files.
@@ -71,7 +71,7 @@ This variable allows you to specify a custom database connection port. If unspec
 
 ### `GONG_DB_USER`
 
-This variable sets the user that Redmine and any rake tasks use to connect to the specified database. If unspecified, it will default to `root`.
+This variable sets the user that Gong and any rake tasks use to connect to the specified database. If unspecified, it will default to `root`.
 
 ### `GONG_DB_PASSWORD`
 
