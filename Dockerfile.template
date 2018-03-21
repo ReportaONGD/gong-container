@@ -1,7 +1,7 @@
 FROM phusion/passenger-ruby22
 
-LABEL maintainer=""
-LABEL version_gong="2.54"
+LABEL maintainer="Raul Victoria Martin <raul.victoria@ezentis.com>"
+LABEL version_gong="%%GONG_VERSION%%"
 LABEL version_webservices="2.47"
 
 # Set correct environment variables.
@@ -10,7 +10,7 @@ ENV HOME /root
 # Define environment
 ENV RAILS_ROOT=/home/app/gor \
 	RAILS_ENV=production  \
-    GONG_VER=2.54 \
+    GONG_VER=%%GONG_VERSION%% \
     GOR_PLUGINS=/home/app/plugins \
     GONG_WEBSERVICE_VER=2.47 \
 	GONG_DB_ADAPTER=mysql2 \
