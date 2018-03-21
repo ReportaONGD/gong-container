@@ -10,7 +10,7 @@ Gong is a free and open source, web-based project management and issue tracking 
 
 ![logo](http://gong.es/IMG/siteon0.png)
 
-## Run Gong with a Database Container
+## Run Gong with a Database
 
 Running Gong with a database server is the recommened way.
 
@@ -27,7 +27,7 @@ Currently, the default user and password is admin/admin
 
 ## Where to Store Data
 
-Important note: There are several ways to store data used by applications that run in Docker containers. We encourage users of the `gong` images to familiarize themselves with the options available, including:
+Important note: There are several ways to store data used by applications that run in Docker containers. We encourage users of the `Gong` images to familiarize themselves with the options available, including:
 
 -	Let Docker manage the storage of your files [by writing the files to disk on the host system using its own internal volume management](https://docs.docker.com/engine/tutorials/dockervolumes/#adding-a-data-volume). This is the default and is easy and fairly transparent to the user. The downside is that the files may be hard to locate for tools and applications that run directly on the host system, i.e. outside containers.
 -	Create a data directory on the host system (outside the container) and [mount this to a directory visible from inside the container](https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume). This places the database files in a known location on the host system, and makes it easy for tools and applications on the host system to access the files. The downside is that the user needs to make sure that the directory exists, and that e.g. directory permissions and other security mechanisms on the host system are set up correctly.
@@ -50,7 +50,7 @@ When you start the `Gong` image, you can adjust the configuration of the instanc
 All those environment varibles can be overwriten this way:
 
 ```console
-$ docker run -d --name some-gong -e GONG_DB_NAME=gong2  reportaongd/gong
+$ doc ker run -d --name some-gong -e GONG_DB_NAME=gong2  reportaongd/gong
 ```
 
 ### `RAILS_ENV`

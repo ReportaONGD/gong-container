@@ -46,12 +46,14 @@ echo "Creating file database.yml $database"
 
 echo "$database" > $RAILS_ROOT/config/database.yml
 
-chown app:app $RAILS_ROOT/config/database.yml
+chown -R app:app $RAILS_ROOT/
 
 rake db:migrate
 
 rake db:seed
 
 bundle exec rails runner $RAILS_ROOT/init.rb
+
+chown -R app:app $RAILS_ROOT/
 
 /sbin/my_init

@@ -54,4 +54,6 @@ rake db:seed
 
 bundle exec rails runner $RAILS_ROOT/init.rb
 
+chown -R app:app $RAILS_ROOT/
+
 /sbin/my_init
