@@ -28,8 +28,6 @@ ENV RAILS_ROOT=/home/app/gor \
 	AD_CLIENT_ID=71800f89-46e5-499a-b90c-f6163a90280cAA \
 	AD_CLIENT_PW=f4363b9e-12a8-421e-88ae-010d406fa208AA 
 
-
-
 # ...put your own build instructions here...
 RUN apt-get update -qq && apt-get install -y \
 		build-essential \
