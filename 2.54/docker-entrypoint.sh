@@ -4,8 +4,6 @@ until nc -z $GONG_DB_HOST $GONG_DB_PORT; do
     sleep 1
 done
 
-
-
 	read -d '' webapp <<EOF
 server {
     listen 80;
