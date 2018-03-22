@@ -8,7 +8,7 @@ sedStr="
 sed -r "$sedStr" $1
 }
 
-versions=(2.54 2.55)
+versions=(2.54)
 for version in ${versions[*]}; do
   mkdir $version
   render Dockerfile.template > $version/Dockerfile
