@@ -12,5 +12,5 @@ versions=(2.54)
 for version in ${versions[*]}; do
   mkdir $version
   render Dockerfile.template > $version/Dockerfile
-  cp docker-entrypoint.sh gong-env.conf init.rb $version/
+  cp docker-entrypoint.sh gong-env.conf init.rb docker-compose.yml $version/
 done
