@@ -1,4 +1,9 @@
 #!/bin/bash
+until nc -z $GONG_DB_HOST $GONG_DB_PORT; do
+    echo "$(date) - waiting for mysql..."
+    sleep 1
+done
+
 
 
 	read -d '' webapp <<EOF
