@@ -6,8 +6,6 @@ services:
     image: mysql:5.7
     restart: always
     command: --sql-mode=''
-    env_file: 
-      - .env
     ports:
       - 3306:3306
     environment:
@@ -17,8 +15,6 @@ services:
     image: reportaongd/gong:latest
     depends_on:
       - db
-    env_file: 
-      - .env
     volumes:
       - /my/own/datadir:/var/lib/gong/files
     ports:
@@ -29,8 +25,6 @@ services:
 
   gong-reporte:
     image: reportaongd/gong-reporte:latest
-    env_file: 
-      - .env
     depends_on:
       - db
       - gong
@@ -39,4 +33,4 @@ services:
     ports:
       - 8080:8080
     environment:
-      - GONG_DB_HOST=db
+      - GONG_REPORTE_DB_HOST=db

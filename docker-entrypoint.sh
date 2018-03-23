@@ -4,6 +4,18 @@ until nc -z $GONG_DB_HOST $GONG_DB_PORT; do
     sleep 1
 done
 
+	read -d '' gong_db <<EOF
+create DATABASE /*!32312 IF NOT EXISTS*/ $GONG_DB_NAME;
+grant ALL ON $GONG_DB_NAME.* TO '$GONG_DB_USER'@'%' IDENTIFIED BY '$GONG_DB_PASSWORD';
+EOF
+	
+	echo "Creando $gong_db"
+	echo "$gong_db" > ./gong_db.sql
+
+mysql -h $GONG_DB_HOST -u $GONG_DB_USER -p$GONG_DB_PASSWORD < ./gong_db.sql
+
+rm ./gong_db.sql
+
 	read -d '' webapp <<EOF
 server {
     listen 80;
