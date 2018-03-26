@@ -20,6 +20,53 @@ Running Gong with a database server is the recommened way.
 	$ docker run -d --name some-gong -e GONG_DB_HOST=MYSQL_HOST  reportaongd/gong
 	```
 
+## Via docker-compose
+Example `docker-compose.yml` for gong:
+
+
+```console
+version: '3'
+
+services:
+
+db:
+	image: mysql:5.7
+	restart: always
+	command: --sql-mode=''
+	ports:
+	- 3306:3306
+	environment:
+	- MYSQL_ROOT_PASSWORD=root
+
+gong:
+	image: reportaongd/gong:latest
+	depends_on:
+	- db
+	volumes:
+	- /my/own/datadir:/var/lib/gong/files
+	ports:
+	- 80:80
+	- 443:443
+	environment:
+	- GONG_DB_HOST=db
+
+gong-reporte:
+	image: reportaongd/gong-reporte:latest
+	depends_on:
+	- db
+	- gong
+	volumes:
+	- /my/own/datadir:/var/opt/Gong-Reporte
+	ports:
+	- 8080:8080
+	environment:
+	- GONG_REPORTE_DB_HOST=db
+	- GONG_API_TOKEN_URL=http://gong
+```
+Run docker `docker-compose up`, wait for it to initialize completely, and visit http://swarm-ip:8080, http://localhost:8080, or http://host-ip:8080 (as appropriate).
+
+
+
 ## Accessing the Application
 
 Currently, the default user and password is admin/admin
