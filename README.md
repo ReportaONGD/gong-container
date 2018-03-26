@@ -66,7 +66,6 @@ gong-reporte:
 Run docker `docker-compose up`, wait for it to initialize completely, and visit http://swarm-ip:8080, http://localhost:8080, or http://host-ip:8080 (as appropriate).
 
 
-
 ## Accessing the Application
 
 Currently, the default user and password is admin/admin
