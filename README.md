@@ -63,6 +63,7 @@ gong-reporte:
 	- GONG_REPORTE_DB_HOST=db
 	- GONG_API_TOKEN_URL=http://gong
 ```
+
 Run docker `docker-compose up`, wait for it to initialize completely, and visit http://swarm-ip:8080, http://localhost:8080, or http://host-ip:8080 (as appropriate).
 
 
