@@ -6,7 +6,7 @@
 
 Gong is a free and open source, web-based project management and issue tracking tool. It allows users to manage multiple projects and associated subprojects. 
 
-> [http://gong.es](http://gong.es)
+> [https://gong.org.es/projects/gongr ](http://gong.es)
 
 ![logo](http://gong.es/IMG/siteon0.png)
 
